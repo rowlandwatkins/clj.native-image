@@ -2,7 +2,7 @@
   "Builds GraalVM native images from deps.edn projects."
   (:require [clojure.java.io :as io]
             [clojure.string :as cs]
-            [clojure.tools.deps :as deps]
+            [clojure.tools.deps.alpha :as deps]
             [tupelo.core :as tp]
             [clojure.tools.namespace.find :refer [find-namespaces-in-dir]])
   (:import (java.io BufferedReader File)))

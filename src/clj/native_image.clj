@@ -14,7 +14,7 @@
         (cs/split $ (re-pattern (str File/pathSeparatorChar)))
         (remove #(cs/includes? "clj.native-image" %) $) ;; exclude ourselves
         (cons *compile-path* $) ;; prepend compile path for classes
-        (tp/spy)
+        (tp/spy $)
         (cs/join File/pathSeparatorChar $)))
 
 (def windows? (cs/starts-with? (System/getProperty "os.name") "Windows"))

@@ -3,6 +3,7 @@
   (:require [clojure.java.io :as io]
             [clojure.string :as cs]
             [clojure.tools.deps :as deps]
+            [tupelo.core :as tp]
             [clojure.tools.namespace.find :refer [find-namespaces-in-dir]])
   (:import (java.io BufferedReader File)))
 
@@ -13,6 +14,7 @@
         (cs/split $ (re-pattern (str File/pathSeparatorChar)))
         (remove #(cs/includes? "clj.native-image" %) $) ;; exclude ourselves
         (cons *compile-path* $) ;; prepend compile path for classes
+        (tp/spy)
         (cs/join File/pathSeparatorChar $)))
 
 (def windows? (cs/starts-with? (System/getProperty "os.name") "Windows"))
